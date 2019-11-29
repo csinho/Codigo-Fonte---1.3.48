@@ -1,0 +1,31 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+<ion-item class="item-accordion" ng-class="{'row-no-padding' : nopadding}" ng-if="showElement()">
+    <label class="item-input" id="{{component.slug}}">
+
+    	<i df-validation-icon></i>
+
+    	<df-item-label></df-item-label>
+
+        <input type="{{component.dataType}}"
+            id="{{component.slug}}"
+            ng-required="isRequired(component)"
+            name="{{component.slug}}"
+            ng-model="component.dataValue"
+            min="{{component.minValue}}"
+            max="{{component.maxValue}}"
+            ng-maxlength="component.maxLength"
+            ng-minlength="component.minLength"
+            placeholder="{{component.placeholder}}"
+            ui-mask="{{component.mask}}"
+            ng-pattern="component.pattern"
+            ng-model-options="{allowInvalid:true}"
+            style="text-align: right; text-transform:uppercase;"
+            df-trim
+            df-custom-validation
+            df-limit-length="{{component.maxLength}}"            
+         />
+    </label>
+</ion-item>
+</ng-form>
+
+

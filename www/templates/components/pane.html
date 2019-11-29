@@ -1,0 +1,20 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+    
+  <ion-content class="content-container has-header" has-footer="true">
+    <div class="mini-header" ng-include src="'templates/miniHeader.html'"></div>
+    <div class="df-form-content"></div>
+    <div class="mini-footer" ng-include src="'templates/miniFooter.html'"></div>
+  </ion-content>
+  
+  <ion-footer-bar class="bar button-bar-footer no-padding" align-title="center">
+    <div class="button-bar">
+      <a style="min-width: 50%;border-radius: 0px;line-height: 35px;padding:4px 16px;font-size:16px;" 
+         class="button button-positive icon-left ion-checkmark-circled" ng-click="validateAndBack()">Concluir
+      </a>
+      <a style="min-width: 50%;border-radius: 0px;line-height: 35px;padding:4px 16px;font-size:16px;"  
+         class="button button-calm icon-right ion-chevron-right" ng-click="validateAndAdvance()" ng-show="next">Avançar
+      </a>
+    </div>
+  </ion-footer-bar>
+
+</ng-form>

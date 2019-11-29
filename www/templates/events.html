@@ -1,0 +1,22 @@
+<ion-view hide-back-button="false" hide-menu="false" >
+  <ion-nav-title>Eventos</ion-nav-title>
+  <ion-content class="content-container" has-footer="true">
+    <ion-refresher
+      pulling-icon=""
+      on-refresh="eventCtrl.doRefresh()">
+    </ion-refresher>
+
+    <div class="padding" >
+      <div ng-show="!eventCtrl.events.length">Nenhum evento próximo</div>
+      <div ng-repeat="event in eventCtrl.events track by event.id">
+        <df-event ng-model="event"></df-event>
+      </div>
+    </div>
+
+    <ion-infinite-scroll
+      ng-if="eventCtrl.moreDataCanBeLoaded()"
+      on-infinite="eventCtrl.loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

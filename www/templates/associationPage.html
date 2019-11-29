@@ -1,0 +1,14 @@
+<ion-view hide-back-button="false" hide-menu="false">
+  <ion-nav-title>{{associationPageCtrl.pageTitle}}</ion-nav-title>
+  <ion-content>
+    <div class="item item-divider">
+        {{associationPageCtrl.resultsLabel}}
+    </div>
+    <label ng-if="associationPageCtrl.showFilterInput" class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input ng-model="associationPageCtrl.searchTerm" type="search" placeholder="Digite sua busca" ng-keyup="associationPageCtrl.doSearch()">
+    </label>
+    <df-search-result  class="df-search-result" ng-model="associationPageCtrl.results" on-item-click="associationPageCtrl.doAssociation">
+    </df-search-result>
+  </ion-content>
+</ion-view>

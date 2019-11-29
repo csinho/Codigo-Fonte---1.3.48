@@ -1,0 +1,16 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+	<ion-item class="item-accordion">
+	    <label class="item-input" id="{{component.slug}}" ng-if="showElement(component)">
+	        <i df-validation-icon></i>
+	        <df-item-label></df-item-label>
+	        <input type="{{component.dataType}}"
+	            id="{{component.slug}}"
+	            ng-required="isRequired(component)"
+	            name="{{component.slug}}"
+	            ng-model="component.dataValue"
+              df-custom-validation
+	            placeholder="{{component.placeholder}}"
+	            style="text-align: right;"/>
+	    </label>
+	</ion-item>
+</ng-form>

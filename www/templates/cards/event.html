@@ -1,0 +1,22 @@
+<div class="list card">
+
+  <div class="item" ng-class="{'event-read' : event.read}">
+    <h2>{{event.title}}</h2>
+    <span ng-show="!event.read" class="badge badge-assertive" ng-click="markAsRead()">novo</span>
+    <p>{{event.date | date:'dd/MM/yyyy'}}</p>
+  </div>
+
+  <div class="item item-body" ng-class="{'event-read' : event.read}">
+    <img ng-if="event.imageName" ng-src="{{getImageSrc()}}">
+    <!-- <img class="full-image" src="delorean.jpg"> -->
+    <p>
+      {{event.description}}
+    </p>
+
+    <button class="button button-outline button-positive" ng-click="markAsRead()" ng-show="!event.read">
+      Marcar como lido
+    </button>
+
+  </div>
+
+</div>

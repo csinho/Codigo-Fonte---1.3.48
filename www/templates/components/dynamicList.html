@@ -1,0 +1,17 @@
+<ng-form name="form-{{component.slug}}" novalidate>
+<div class="padding">
+	<button class="button button-positive" ng-click="add()">Adicionar {{component.itemTitle}}</button>
+
+	<ion-list show-delete="true">
+		<ion-item ng-repeat="component in component.elements" df-page-link ng-click="openPage($event, component)" class="enable-pointer-events">
+			<ng-form name="form-{{component.slug}}">
+				<input type="hidden" ng-model="component" df-pre-validation />
+
+				{{component.headerTitle}}
+				<i df-validation-icon></i>
+				<ion-delete-button class="ion-trash-a" ng-click="remove($index)"></ion-delete-button>
+			</ng-form>
+		</ion-item>
+	</ion-list>
+</div>
+</ng-form>

@@ -1,0 +1,6 @@
+<df-component ng-model="component" parent="parent">
+	<div ng-if="showElement()" class="padding">
+		<div ng-show="component.label" class="item item-divider">{{component.label}} {{isRequired(component) ? '* ' : ''}}</div>
+		<df-general ng-model="component"></df-general>
+	</div>
+</df-component>

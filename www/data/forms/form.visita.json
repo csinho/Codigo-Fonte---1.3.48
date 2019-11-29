@@ -1,0 +1,103 @@
+{
+  "slug": "visita",
+  "meta": {
+    "formVersion": 1,
+    "createdAt": "2016-07-20",
+    "updatedAt": "2016-07-20",
+    "formType": "visita",
+    "formName": "Visita",
+    "icon":"ion-android-exit",
+    "themeColor":"blue"
+  },
+  "elements" :
+  [
+	      {
+	        "type": "switch",
+	        "slug": "visitaCompartilhada",
+	        "label": "Visita Compartilhada com Outro Profissional",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "tipoVisita",
+	        "label": "Cadastro / Atualização",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "visitaPeriodica",
+	        "label": "Visita Periódica",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "multiSelect",
+	        "label": "Busca Ativa",
+	        "placeholder": "Selecione",
+	        "dataValue": null,
+	        "visibilityDependsOn": "visitaPeriodica",
+	        "visibilityDependsOnAttr": "dataValue",
+	        "visibilityDependsOnCompare": false,
+	        "slug": "listaBuscaAtiva",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "motivovisitabuscaativa"
+	      },
+	      {
+	        "type": "multiSelect",
+	        "label": "Acompanhamento",
+	        "visibilityDependsOn": "visitaPeriodica",
+	        "visibilityDependsOnAttr": "dataValue",
+	        "visibilityDependsOnCompare": false,
+	        "placeholder": "Selecione",
+	        "dataValue": null,
+	        "slug": "listaDeAcompanhamento",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "motivovisitaacompanhamento"
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "egressoInternacao",
+	        "label": "Egresso de Internação",
+	        "dataValue": false,
+	        "visibilityDependsOn": "visitaPeriodica",
+	        "visibilityDependsOnAttr": "dataValue",
+	        "visibilityDependsOnCompare": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "controleDeAmbientes",
+	        "label": "Controle de Ambientes / Vetores",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "conviteAtividadesColetivas",
+	        "label": "Convite Atividades Coletivas / Campanha de Saúde",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "orientacaoPrevencao",
+	        "label": "Orientação / Prevenção",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "switch",
+	        "slug": "motivoVisitaOutros",
+	        "label": "Outros",
+	        "dataValue": false
+	      },
+	      {
+	        "type": "select",
+	        "label": "Desfecho",
+	        "slug": "desfecho",
+	        "placeholder": "Selecione",
+	        "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "desfecho"
+	      }
+  ],
+  "appendedData":[]
+}

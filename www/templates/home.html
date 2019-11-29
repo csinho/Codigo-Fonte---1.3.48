@@ -1,0 +1,90 @@
+<div class="main-page">
+  <ion-view view-title="Início">
+    <ion-content>
+      <div class="home">
+         <div class="logo-container df-table">
+          <div class="row df-row">
+            <div class="col col-25 pull-right df-col">
+              <img src="img/logo-small.png" />
+            </div>
+            <div class="col col-75 pull-left df-col">
+              <p class="app-title">Mapa da Saúde</p>
+            </div>
+          </div>
+          <div class="row pull-right df-row">
+              <div class="col df-col">
+              </div>
+              <div class="col df-col ion-person icon-right">
+                 <b>Olá {{globalCtrl.currentUser.nome}}</b>
+              </div>
+          </div>
+        </div>
+        <div class="box_menu">
+          <ul class="items-container">
+            <li class="menu-item" ng-click="globalCtrl.goToState('app.forms', true)">
+              <div class="row">
+                <div class="col col-25 bg_box_green box-menu-item-icon-container">
+                  <img src="svg/form.svg" />
+                </div>
+                <div class="col col-75 pull-left box-menu-item-desc-container">
+                  <p class="box-menu-item-desc">Formulários</p>
+                  <p class="box-menu-item-subtitle">Fichas</p>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" ng-click="globalCtrl.goToState('app.search', true)">
+              <div class="row">
+                <div class="col col-25 bg_box_red box-menu-item-icon-container">
+                  <img src="svg/search.svg" />
+                </div>
+                <div class="col col-75 pull-left box-menu-item-desc-container">
+                  <p class="box-menu-item-desc">Busca</p>
+                  <p class="box-menu-item-subtitle">De cadastros</p>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" ng-click="globalCtrl.goToState('app.sync', true)">
+              <div class="row">
+                <div class="col col-25 bg_box_blue box-menu-item-icon-container">
+                  <img src="svg/sync.svg" />
+                </div>
+                <div class="col col-75 pull-left box-menu-item-desc-container">
+                  <p class="box-menu-item-desc">Sincronização</p>
+                  <p class="box-menu-item-subtitle">De dados</p>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" ng-click="globalCtrl.goToState('app.searchIndividuo')">
+              <div class="row">
+                <div class="col col-25 bg_box_orange box-menu-item-icon-container">
+                  <img src="svg/visit.svg" />
+                </div>
+                <div class="col col-75 pull-left box-menu-item-desc-container">
+                  <p class="box-menu-item-desc">Visita</p>
+                  <p class="box-menu-item-subtitle">A cidadão</p>
+                </div>
+              </div>
+          </li>
+          </ul>
+        </div>
+
+        <div class="card" style="display:none">
+          <div class="item item-divider">
+            Dashboard
+          </div>
+          <div class="item item-text-wrap">
+            teste
+          </div>
+        </div>
+
+      </div>
+      <div class="footer">
+        <img src="img/bg_bottom.png"></li>
+      </div>
+
+      <div class="bar bar-footer bar-dark">
+        <div class="title">ID do disp.: {{globalCtrl.deviceId}} | Versão: {{globalCtrl.appVersion}}</div>
+      </div>
+    </ion-content>
+  </ion-view>
+</div>

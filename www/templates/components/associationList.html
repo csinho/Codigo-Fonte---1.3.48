@@ -1,0 +1,31 @@
+<ng-form name="form-{{component.slug}}">
+<div ng-if="component.label" class="item item-divider">
+    <i df-validation-icon></i>{{component.label}}
+</div>
+<ion-item>
+    <div style="padding-bottom:6px;">
+    	<button class="button button-positive" ng-click="registerNew()">Cadastrar {{component.itemTitle}}</button>
+    	<button class="button button-positive" ng-click="associate()">Associar {{component.itemTitle}}</button>
+    </div>
+	<ion-list show-delete="true" can-swipe="true" >
+      <input type="hidden" required ng-model="component" df-custom-validation />
+	    <ion-item ng-repeat="item in component.elements" class="item item-avatar association-list-item enable-pointer-events">
+        <ion-delete-button class="ion-close-round" ng-click="disassociate(item)"></ion-delete-button>
+        <df-association-item
+          slug="item.dataValue"
+          type="component.associationTargetType"
+          df-page-link
+          ng-model="component"
+          requiresMainItemSelection="component.mainItem"
+          singleSelectionGroup="component.mainItem.groupSlug"
+          on-item-click="openAssociation">
+        </df-association-item>
+        <!--<ion-option-button class="button-assertive button-light icon ion-minus-circled"
+          ng-click="disassociate(item)">
+        </ion-option-button>-->
+	    </ion-item>
+	</ion-list>
+</ion-item>
+</ng-form>
+
+

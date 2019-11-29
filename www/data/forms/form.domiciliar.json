@@ -1,0 +1,361 @@
+{
+  "slug": "cadastroDomiciliar",
+  "meta": {
+    "formVersion": 1,
+    "createdAt": "2016-05-01",
+    "updatedAt": "2016-05-02",
+    "formName": "Cadastro Domiciliar",
+    "formType": "cadastroDomiciliar",
+    "supportsQRCodeAssociationPrompt": false,
+    "icon": "home",
+    "themeColor": "green",
+    "publicForm": true,
+    "summary": {
+      "icon": "ion-home",
+      "title": "nomeLogradouro",
+      "subtitle": "numeroResidencia"
+    }
+  },
+  "elements": [
+    {
+      "type": "container",
+      "slug": "containerEndereco",
+      "requiresOpening": true,
+      "headerTitle": "Endereço / Local de Permanência",
+      "elements": [
+        {
+          "type": "autocomplete",
+          "slug": "tipodelogradouro",
+          "dataType": "text",
+          "label": "Tipo de Logradouro",
+          "desc": "Selecione o tipo de logradouro",
+          "required": true,
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tipodelogradouro"
+        },
+        {
+          "type": "textbox",
+          "slug": "nomeLogradouro",
+          "dataType": "text",
+          "label": "Nome do Logradouro",
+          "desc": "Informe o nome do logradouro",
+          "required": true,
+          "searchable": true,
+          "dataValue": ""
+        },
+        {
+          "type": "toggle",
+          "label": "A residência possui número",
+          "dataValue":true,
+          "slug": "residenciaPossuiNumero"
+        },
+        {
+          "type": "textbox",
+          "visibilityDependsOn": "residenciaPossuiNumero",
+          "requirementDependsOn": "residenciaPossuiNumero",
+          "requirementDependsOnCompare": true,
+          "slug": "numeroResidencia",
+          "dataType": "text",
+          "label": "Nº do domicílio",
+          "desc": "Informe o número da residência",
+          "required": true,
+          "searchable": false,
+          "dataValue": ""
+        },
+        {
+          "type": "textbox",
+          "slug": "complemento",
+          "dataType": "text",
+          "label": "Complemento",
+          "desc": "Informe a descrição do complemento",
+          "searchable": true,
+          "dataValue": ""
+        },
+        {
+          "type": "textbox",
+          "slug": "bairro",
+          "dataType": "text",
+          "label": "Bairro",
+          "desc": "Informe o bairro",
+          "required": true,
+          "searchable": true,
+          "dataValue": ""
+        },
+        {
+          "type": "select",
+          "label": "UF",
+          "slug": "unidadefederativa",
+          "desc": "Selecione um estado",
+          "searchable": true,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "deviceUserState"
+        },
+        {
+          "type": "select",
+          "label": "Município",
+          "slug": "municipio",
+          "searchable": true,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "deviceUserCity",
+          "visibilityDependsOn": "unidadefederativa",
+          "visibilityDependsOnAttr": "dataValue.value"
+        },
+        {
+          "type": "textbox",
+          "slug": "cep",
+          "dataType": "tel",
+          "mask": "99.999-999",
+          "label": "CEP",
+          "desc": "Informe o código postal (CEP)",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "type": "geolocation",
+          "slug": "geolocalizacao",
+          "label": "Posição geográfica",
+          "autoAcquire":true,
+          "autoUpdate":true
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "slug": "containerTelefones",
+      "headerTitle": "Telefones para Contato",
+      "elements": [
+        {
+          "type": "textbox",
+          "dataType": "tel",
+          "label": "Telefone Residencial",
+          "mask": "(99) 99999-999?9",
+          "searchable": true,
+          "dataValue": null,
+          "slug": "telefoneResidencial"
+        },
+        {
+          "type": "textbox",
+          "dataType": "tel",
+          "label": "Telefone de Referência",
+          "mask": "(99) 99999-999?9",
+          "searchable": true,
+          "slug": "telefoneReferencia",
+          "dataValue": null
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "slug": "containerCondicoesMoradia",
+      "requiresOpening": true,
+      "headerTitle": "Condições de Moradia",
+      "elements": [
+        {
+          "type": "select",
+          "label": "Situação de Moradia",
+          "placeholder": "Selecione",
+          "required": true,
+          "slug": "situacaodemoradiapossedeterra",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "situacaodemoradiapossedeterra"
+        },
+        {
+          "type": "select",
+          "label": "Localização",
+          "slug": "localizacaodamoradia",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "localizacaodamoradia"
+        },
+        {
+          "type": "select",
+          "label": "Tipo de Domicílio",
+          "slug": "tipoDomicilio",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tipodedomicilio"
+        },
+        {
+          "type": "textbox",
+          "dataType": "number",
+          "label": "Nº de cômodos",
+          "minValue": 1,
+          "slug": "numeroDeComodos",
+          "dataValue": null,
+          "required": true
+        },
+        {
+          "type": "select",
+          "label": "Tipo de Acesso ao Domicílio",
+          "slug": "tipodeacessoaodomicilio",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tipodeacessoaodomicilio"
+        },
+        {
+          "type": "select",
+          "slug": "materialpredominantenaconstrucao",
+          "label": "Material Predominante na Construção das Paredes Externas",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "materialpredominantenaconstrucao"
+        },
+        {
+          "type": "select",
+          "slug": "condicaodeposseeusodaterra",
+          "label": "Condição de Posse e Uso da Terra",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "condicaodeposseeusodaterra"
+        },
+        {
+          "type": "toggle",
+          "label": "Disponibilidade de Energia Elétrica",
+          "slug": "disponibilidadeEnergiaEletrica"
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "slug": "containerAguaEsgoto",
+      "headerTitle": "Água e Esgoto",
+      "elements": [
+        {
+          "type": "select",
+          "label": "Abastecimento de Água",
+          "slug": "abastecimentodeagua",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "abastecimentodeagua"
+        },
+        {
+          "type": "select",
+          "label": "Tratamento de Água no Domicílio",
+          "slug": "tratamentoAguaNoDomicilio",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tratamentodeaguanodomicilio"
+        },
+        {
+          "type": "select",
+          "label": "Forma de Escoamento do Banheiro ou Sanitário",
+          "slug": "formadeescoamentodobanheiroousanitario",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "formadeescoamentodobanheiroousanitario"
+        },
+        {
+          "type": "select",
+          "label": "Destino do Lixo",
+          "slug": "destinodolixo",
+          "placeholder": "Selecione",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "destinodolixo"
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "headerTitle": "Animais",
+      "slug": "containerAnimais",
+      "elements": [
+        {
+          "type": "toggle",
+          "slug": "temAnimais",
+          "label": "Animais no Domicílio"
+        },
+        {
+          "visibilityDependsOn": "temAnimais",
+          "type": "section",
+          "slug": "tiposAnimais",
+          "label": "Indique a quantidade",
+          "elements": [
+            {
+              "type": "textbox",
+              "slug": "gato",
+              "dataType": "number",
+              "label": "Quantidade de gatos",
+              "desc": "Quantidade de gatos"
+            },
+            {
+              "type": "textbox",
+              "slug": "cachorro",
+              "dataType": "number",
+              "label": "Quantidade de cachorros",
+              "desc": "Quantidade de cachorros"
+            },
+            {
+              "type": "textbox",
+              "slug": "passaro",
+              "dataType": "number",
+              "label": "Quantidade de pássaros",
+              "desc": "Quantidade de pássaros"
+            },
+            {
+              "type": "textbox",
+              "slug": "decriacao",
+              "dataType": "number",
+              "label": "Qtd. animais de criação (porco, galinha...)",
+              "desc": "Qtd. animais de criação (porco, galinha...)"
+            },
+            {
+              "type": "textbox",
+              "slug": "outros",
+              "dataType": "number",
+              "label": "Quantidade de outros animais",
+              "desc": "Quantidade de outros animais"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "container",
+      "headerTitle": "Famílias",
+      "slug": "containerFamilias",
+      "elements": [
+        {
+          "type": "associationList",
+          "desc":"Famílias do domicílio",
+          "label": "Adicione/associe família(s) ",
+          "slug": "listFamilias",
+          "itemTitle": "Família",
+          "dataType":"associatedFormType",
+          "associationTargetType": "familia",
+          "formAssociation": true,
+          "dataValue": null,
+          "elements": []
+        }
+      ]
+    },
+    {
+      "slug":"qrCodeAssociated",
+      "type":"qrCodeButton",
+      "required":false,
+      "desc":"Código QR",
+      "label": "Associar código QR"
+    }
+  ],
+  "appendedData": []
+}

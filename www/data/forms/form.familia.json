@@ -1,0 +1,79 @@
+{
+  "slug": "familia",
+  "meta": {
+    "formVersion": 1,
+    "createdAt": "2016-07-22",
+    "updatedAt": "2016-07-22",
+    "formType": "familia",
+    "formName": "Família",
+    "publicForm" : true,
+    "icon":"users",
+    "themeColor":"red",
+    "summary" : {
+      "icon" : "ion-android-people",
+      "title" : "numeroProntuarioFamiliar",
+      "subtitle" : "residenteDesde"
+    }
+  },
+  "elements" :
+  [
+	  {
+	    "type": "textbox",
+	    "label": "Nº Prontuário Familiar",
+	    "dataType": "text",
+	    "slug": "numeroProntuarioFamiliar",
+	    "dataValue": null,
+	    "required": true,
+	    "searchable": true
+	  },
+	  {
+	    "type": "date",
+	    "label": "Residente desde",
+	    "dataType": "month",
+	    "slug": "residenteDesde",
+	    "dataValue": null,
+	    "validators": [
+	      "pastDate"
+	    ]
+	  },
+	  {
+        "type": "select",
+        "label": "Renda (Sal. Mínimo)",
+        "placeholder": "Selecione",
+        "slug": "rendafamliar",
+        "dataValue": null,
+        "optionsExternalSource": true,
+        "sourceType": "database",
+        "contentType": "rendafamliar"
+      },
+	  {
+	    "type": "switch",
+	    "slug": "mudouse",
+	    "label": "Mudou-se",
+	    "dataValue": false
+	  },
+	  {
+	    "type": "associationList",
+	    "slug": "individuosFamilia",
+      "desc":"Indivíduos da família",
+	    "itemTitle": "Indivíduo",
+      "dataType":"associatedFormType",
+      "label":"Adicione/associe indivíduos e defina um como chefe da família",
+	    "associationTargetType": "cadastroIndividual",
+      "requiredAtLeast":1,
+      "mainItem":{
+        "required":true,
+        "groupSlug":"chefeDaFamilia",
+        "label":"Chefe",
+        "slug":"chefeDaFamilia",
+        "dependsOnTargetFormFieldBeFilled":"numeroCartaoSUS",
+        "selectedItemSlug":null,
+        "invalidMessage":"O responsável familiar deve ter o número do cartão SUS preenchido"
+      },
+	    "formAssociation": true,
+	    "elements": []
+
+	  }
+  ],
+  "appendedData":[]
+}

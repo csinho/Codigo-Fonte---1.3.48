@@ -1,0 +1,19 @@
+Crash Analytics used: https://github.com/sarriaroman/FabricPlugin
+Bar code scanner http://ngcordova.com/docs/plugins/barcodeScanner/
+sqlite: https://github.com/litehelpers/Cordova-sqlite-storage
+Xtoast: https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin
+camera: https://github.com/apache/cordova-plugin-camera
+google analytics: https://github.com/danwilson/google-analytics-plugin
+geolocation: https://github.com/apache/cordova-plugin-geolocation
+fabric crashlytics: https://github.com/sarriaroman/FabricPlugin
+background-geolocation "cordova plugin add cordova-background-geolocation-lt"
+angular-time-ago: https://github.com/yaru22/angular-timeago
+
+
+commands:
+ionic state save #saves the plugin, keys and other sources
+ionic state reset #reset a saved state, including the plugin, keys and other sources
+ionic state restore # restore the state
+
+<sonar-executable> -Dsonar.login=<your-token>
+

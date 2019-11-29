@@ -1,0 +1,233 @@
+{
+  "slug": "atividadeColetiva",
+  "meta": {
+    "formVersion": 1,
+    "createdAt": "2016-05-01",
+    "updatedAt": "2016-05-02",
+    "formType": "atividadeColetiva",
+    "formName": "Atividade Coletiva",
+    "icon":"users",
+    "themeColor":"yellow",
+    "publicForm":true,
+    "summary": {
+      "title": "dataDaAtividade",
+      "subtitle": "codigoEquipe"
+    }
+  },
+  "elements": [
+    {
+      "type": "container",
+      "slug": "dadosDaAtividade",
+      "requiresOpening":true,
+      "headerTitle": "Dados da atividade",
+      "elements": [
+        {
+          "type": "date",
+          "slug": "dataDaAtividade",
+          "dataType": "date",
+          "label": "Data da atividade",
+          "desc": "Data da atividade",
+          "required": true,
+          "dataValue": "now"
+
+        },
+        {
+          "type": "date",
+          "slug": "horaInicioDaAtividade",
+          "dataType": "time",
+          "label": "Hora de início",
+          "desc": "Hora de início",
+          "dataValue": "now",
+          "placeholder": "horas:mins"
+
+        },
+        {
+          "type": "date",
+          "slug": "horaFimDaAtividade",
+          "dataType": "time",
+          "label": "Hora de fim",
+          "desc": "Hora de fim",
+          "dataValue": "now",
+          "placeholder": "horas:mins"
+        },
+        {
+          "type": "textbox",
+          "slug": "numeroINEP",
+          "dataType": "number",
+          "label": "Número INEP(escola/creche)",
+          "desc": "Número INEP(escola/creche)",
+          "dataValue": null,
+          "pattern": "[0-9]{8}",
+          "maxLength":8,
+          "minLength":8,
+          "searchable":true
+        },
+        {
+          "type": "textbox",
+          "label": "Código CNES UNIDADE",
+          "dataType": "number",
+          "slug": "codigoCNESUnidade",
+          "dataValue": null,
+          "pattern": "[0-9]{7}",
+          "maxLength":7,
+          "minLength":7,
+          "searchable":true
+        },
+        {
+          "type": "textbox",
+          "label": "Código EQUIPE (INE)",
+          "dataType": "number",
+          "slug": "codigoEquipe",
+          "dataValue": null,
+          "pattern": "[0-9]{10}",
+          "maxLength":10,
+          "minLength":10,
+          "searchable":true
+        },
+        {
+          "type": "textbox",
+          "label": "Programação de número de participantes",
+          "dataType": "number",
+          "slug": "programacaoNumeroParticipantes",
+          "dataValue": null,
+          "minValue": 1
+        },
+        {
+          "type": "toggle",
+          "label": "É uma atividade interna?",
+          "slug": "ehAtividadeInterna",
+          "required":true
+        },
+         {
+          "type": "select",
+          "label": "Tipo de atividade interna",
+          "visibilityDependsOn": "ehAtividadeInterna",
+          "visibilityDependsOnCompare": true,
+          "requirementDependsOn": "ehAtividadeInterna",
+          "requirementDependsOnCompare": true,
+          "searchable":true,
+          "slug": "tipoDeAtividadeInterna",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tipodeatividadecoletivainterna"
+        },
+        {
+          "type": "select",
+          "label": "Tipo de atividade externa",
+          "visibilityDependsOn": "ehAtividadeInterna",
+          "visibilityDependsOnCompare": false,
+          "requirementDependsOn": "ehAtividadeInterna",
+          "requirementDependsOnCompare": false,
+          "slug": "tipoDeAtividadeExterna",
+          "searchable":true,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "tipodeatividadecoletivaexterna"
+        },
+        {
+          "type": "multiSelect",
+          "label": "Temas para reunião (opção múltipla)",
+          "slug": "temasParaReunião",
+          "visibilityDependsOn": "ehAtividadeInterna",
+          "visibilityDependsOnCompare": true,
+          "requirementDependsOn": "ehAtividadeInterna",
+          "searchable":true,
+          "requirementDependsOnCompare": true,
+          "requiredAtLeast":1,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "temasparareuniao"
+        },
+        {
+          "type": "multiSelect",
+          "label": "Público Alvo (opção múltipla)",
+          "visibilityDependsOn": "ehAtividadeInterna",
+          "visibilityDependsOnCompare": false,
+          "requirementDependsOn": "ehAtividadeInterna",
+          "requirementDependsOnCompare": false,
+          "searchable":true,
+          "requiredAtLeast":1,
+          "slug": "publicoAlvo",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "publicoalvo"
+        },
+        {
+          "type": "multiSelect",
+          "label": "Práticas / Temas para a Saúde (opção múltipla)",
+          "visibilityDependsOn": "ehAtividadeInterna",
+          "visibilityDependsOnCompare": false,
+          "requirementDependsOn": "ehAtividadeInterna",
+          "requirementDependsOnCompare": false,
+          "searchable":true,
+          "requiredAtLeast":1,
+          "slug": "praticasTemasParaASaude",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "praticatemasparasaude"
+        }
+      ]
+    },
+    {
+      "type":"container",
+      "requiresOpening":true,
+      "slug":"profissionaisEnvolvidos",
+      "headerTitle":"Outros profissionais envolvidos",
+      "elements":
+      [
+        {
+          "type": "dynamicList",
+          "slug": "listaProfissionaisEnvolvidos",
+          "itemTitle": "Profissional",
+          "elements": [],
+          "elementsTemplate": {
+            "type": "container",
+            "slug": "outrosProfissionaisEnvolvidos",
+            "elements": [
+              {
+                "type": "textbox",
+                "label": "Nº do cartão do SUS do profissional",
+                "dataType": "number",
+                "slug": "numeroCartaosusProfissional",
+                "dataValue": null,
+                "required":true,
+                "pattern": "[0-9]{15}"
+              },
+              {
+                "type": "autocomplete",
+                "label": "Ocupação",
+                "slug": "cbo",
+                "dataType": "text",
+                "optionsExternalSource": true,
+                "sourceType": "database",
+                "contentType": "cbo"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "slug": "resultadoDaAtividadeColetiva",
+      "headerTitle": "Resultados da atividade coletiva",
+      "elements": [
+        {
+          "type": "textbox",
+          "label": "Número efetivo de participantes",
+          "dataType": "number",
+          "slug": "numeroEfetivoDeParticipantes",
+          "dataValue": null
+        },
+         {
+          "type": "textbox",
+          "label": "Número de avaliações alteradas",
+          "dataType": "number",
+          "slug": "numeroDeAvaliacoesalteradas",
+          "dataValue": null
+        }
+      ]
+    }
+  ],
+  "appendedData":[]
+}

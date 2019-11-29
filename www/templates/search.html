@@ -1,0 +1,57 @@
+<ion-view drag-content="false" cache-view="false" hide-menu="false" view-title="{{searchCtrl.viewTitle}}" hide-nav-bar="false" hide-back-button="false" can-swipe-back="true">
+  <ion-content class="content-container">
+
+    <div >
+      <div class="mini-header" ng-include src="'templates/miniHeader.html'"></div>
+      <div>
+        <div class="card card-padding">
+          <div class="item item-divider">
+            Busca
+          </div>
+          <div class="row">
+            <div class="col">
+              <ion-radio ng-model="searchCtrl.status" ng-change="searchCtrl.doSearch()" ng-value="'draft'">Rascunhos</ion-radio>
+            </div>
+            <div class="col">
+              <ion-radio ng-model="searchCtrl.status" ng-change="searchCtrl.doSearch()" ng-value="'completed'">Concluídos</ion-radio>
+            </div>
+            <div class="col">
+              <ion-radio ng-model="searchCtrl.status" ng-change="searchCtrl.doSearch()" ng-value="'all'">Todos</ion-radio>
+            </div>
+          </div>
+          <label ng-if="searchCtrl.showAllTypes" class="item-input item-select">
+              <span class="input-label">Tipo de formulário</span>
+              <select ng-change="searchCtrl.doSearch()" ng-options="item.type as item.desc for item in searchCtrl.searchableFormTypes track by item.type"
+                ng-model="searchCtrl.searchFormType">
+                <option value="">Todos os tipos</option>
+            </select>
+          </label>
+          <div class="row">
+            <div class="col col-66">
+              <label class="item-input" id="serachTermLabel">
+              <span class="input-label">Contendo:</span>
+              <input type="text"
+                        id="searchTerm"
+                        name="searchTerm"
+                        ng-model="searchCtrl.searchTerm"
+                        placeholder="Termo/código"
+                        ng-keyup="searchCtrl.doSearch()"
+               />
+            </div>
+            <div class="col col-33">
+              <button class="button button-block button-positive icon-left ion-qr-scanner" ng-click="searchCtrl.scanBarcode()">Código</button>
+            </div>
+          </div>
+
+          <div class="item item-divider" ng-class="searchCtrl.searching? 'loading':''">
+            {{searchCtrl.searchResultLabel}}
+          </div>
+          <div class="item-text-wrap">
+            <df-search-result class="df-search-result" ng-model="searchCtrl.results" on-item-click="searchCtrl.goToItem"> </df-search-result>
+          </div>
+        </div>
+      </div>
+      <div class="mini-footer" ng-include src="'templates/miniFooter.html'"></div>
+    </div>
+  </ion-content>
+</ion-view>

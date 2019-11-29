@@ -1,0 +1,15 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+  <ion-item class="item-accordion" ng-if="showElement(component)">
+    <label  class="item-input item-select">
+		    <i df-validation-icon></i>
+        <df-item-label></df-item-label>
+        <select id="{{component.slug}}" ng-options="item as item.desc for item in component.options track by item.slug"
+                ng-model="component.dataValue" name="{{component.slug}}"
+                df-custom-validation
+                ng-required="isRequired(component)">
+            <option value="">Selecione</option>
+        </select>
+    </label>
+  </ion-item>
+</ng-form>
+

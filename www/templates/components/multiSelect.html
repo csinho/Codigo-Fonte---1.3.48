@@ -1,0 +1,12 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+  <input type="hidden" ng-model="component" df-custom-validation />
+  <ion-item class="item-accordion" ng-if="showElement(component)">
+      <div id="{{component.slug}}" ng-required="isRequired(component)">
+          <i df-validation-icon></i>
+          <df-item-label></df-item-label>
+          <ion-checkbox ng-repeat="item in component.options" df-custom-validation ng-model="item.selected">
+              {{item.desc}}
+          </ion-checkbox>
+      </div>
+  </ion-item>
+</ng-form>

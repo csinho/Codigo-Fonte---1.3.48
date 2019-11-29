@@ -1,0 +1,8 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+<ion-item class="item-accordion" ng-if="showElement(component)">
+    <ion-toggle id="{{component.slug}}" ng-model="component.dataValue" style="border: 0px;">
+        <i df-validation-icon></i>
+        <df-item-label></df-item-label>
+    </ion-toggle>
+</ion-item>
+</ng-form>

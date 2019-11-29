@@ -1,0 +1,21 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/*
+!platforms/android/release-signing.properties
+!platforms/android/appMapaDaSaudeKey.keystore
+plugins/
+resources/android/
+resources/ios/
+.tmp
+.sass-cache
+*.swp
+*.swo
+*.log
+*.DS_Store
+
+.sonar/
+/.vscode/
+/.project
+/.settings/

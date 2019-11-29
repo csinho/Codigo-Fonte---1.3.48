@@ -1,0 +1,51 @@
+<ion-view drag-content="false" hide-menu view-title="Visitas" hide-nav-bar="false" hide-back-button="false" can-swipe-back="true">
+  <ion-content class="content-container">
+
+    <div ng-controller="VisitsController as visitsCtrl">
+      <div class="mini-header" ng-include src="'templates/miniHeader.html'"></div>
+      <div>
+        <div class="card card-padding">
+        </div>
+        <div class="card card-padding">
+          <div class="item item-divider">
+            Filtrar visitas
+          </div>
+
+          <div class="row">
+            <div class="col col-66">
+              <label class="item-input" id="serachTermLabel">
+                <span class="input-label">Contendo:</span>
+                <input type="text"
+                        id="searchTerm"
+                        name="searchTerm"
+                        ng-model="visitsCtrl.searchTerm"
+                        placeholder="Termo/código a ser buscado"
+                        ng-keyup="visitsCtrl.doSearch()"
+                    />
+                 </div>
+                 <div class="col col-33">
+                   <button class="button button-block button-positive icon-left ion-home" ng-click="visitsCtrl.new()">Nova visita</button>
+                 </div>
+               </div>
+          <div class="item item-divider">
+            {{visitsCtrl.searchResultLabel}}
+          </div>
+
+          <div class="item item-text-wrap">
+            <ion-list>
+              <ion-item ng-click="visitsCtrl.goToItem(result)" ng-repeat="result in visitsCtrl.results">
+                <p class="itemType">
+                  {{result.typeDesc}}
+                </p>
+                {{result.desc}}: <b>{{result.value}}</b>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+      <div class="mini-footer" ng-include src="'templates/miniFooter.html'"></div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

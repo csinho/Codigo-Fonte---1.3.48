@@ -1,0 +1,10 @@
+<ion-view hide-back-button="false" hide-menu="false" >
+  <ion-nav-title>Sumário</ion-nav-title>
+  <ion-content class="content-container"> 
+    <ion-item class="no-padding" ng-if="summaryCtrl.rootForm" ng-click="summaryCtrl.onItemClick(summaryCtrl.rootForm)">
+      <df-summary-alt class="df-summary" ng-model="summaryCtrl.rootForm" ></df-summary>
+    </ion-item>
+  </ion-content>
+</ion-view>
+
+

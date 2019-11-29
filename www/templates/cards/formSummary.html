@@ -1,0 +1,21 @@
+<div class="row" style="background:#F2F2F2;margin-bottom: 10px;">
+  <div class="col" ng-class="item.summary.icon? item.summary.icon : 'ion-clipboard'">
+    <span style="padding-left:5px">{{item.typeDesc}}</span>
+  </div>
+  <div class="col"><span style="float:right"><i>{{item.statusDesc}}</i> -
+  <time class="form-time icon-right ion-calendar">{{item.createdAt | date:'dd/MMM/yyyy'}}</time> </span></div>
+</div>
+<div class="row" ng-if="showValueDesc">
+  <div class="col"><span> {{item.desc}}: <b>{{item.value}}</b></span></div>
+</div>
+<div class="row" ng-if="item.summary.isValid">
+  <div class="col">
+    <p> {{item.summary.title.label}}: <b>{{item.summary.title.value}}</b></p>
+    <p> {{item.summary.subtitle.label}}: <b>{{item.summary.subtitle.value}}</b></p>
+  </div>
+</div>
+<style>
+  time.form-time:before {
+    padding-right: 5px;
+  }
+</style>

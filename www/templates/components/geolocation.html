@@ -1,0 +1,82 @@
+
+  <df-component ng-model="component" parent="parent">
+    <ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+    <div ng-if="showElement()" class="padding">
+      <input type="hidden" ng-model="component" df-custom-validation />
+      <div ng-show="component.label" class="item item-divider">
+        <i df-validation-icon></i>
+    	  <df-item-label></df-item-label>
+      </div>
+
+      <ion-item class="item-accordion" ng-class="{'row-no-padding' : nopadding}">
+        <ion-item class="item-accordion item item-input-no-border" ng-class="{'row-no-padding' : nopadding}">
+          <label class="item-input" id="{{component.slug}}_lat_label">
+            <span class="input-label item-text-wrap">{{component.labelLat}}:</span>
+            <input type="{{component.dataType}}"
+              id="{{component.slug}}_lat"
+              ng-required="isRequired(component)"
+              name="{{component.slug}}_lat"
+              ng-model="component.transient.lat"
+              disabled="disabled"
+              placeholder="Não definida"
+              df-custom-validation
+            />
+          </label>
+        </ion-item>
+        <ion-item class="item-accordion item item-input-no-border" ng-class="{'row-no-padding' : nopadding}">
+          <label class="item-input" id="{{component.slug}}_long_label">
+            <span class="input-label item-text-wrap">{{component.labelLong}}:</span>
+            <input type="{{component.dataType}}"
+              id="{{component.slug}}_long"
+              ng-required="isRequired(component)"
+              name="{{component.slug}}_long"
+              ng-model="component.transient.long"
+              placeholder="Não definida"
+              disabled="disabled"
+              df-custom-validation
+            />
+          </label>
+        </ion-item>
+        <ion-item style="display:none" class="item-accordion item item-input-no-border" ng-class="{'row-no-padding' : nopadding}">
+          <label class="item-input" id="{{component.slug}}_alt_label">
+            <span class="input-label item-text-wrap">{{component.labelAlt}}:</span>
+            <input type="{{component.dataType}}"
+              id="{{component.slug}}_alt"
+              name="{{component.slug}}_alt"
+              ng-model="component.transient.alt"
+              placeholder="Não definida"
+              disabled="disabled"
+              df-custom-validation
+            />
+          </label>
+        </ion-item>
+        <div class="df-table">
+          <div class="row df-row">
+            <div class="col col-25 pull-left df-col">
+              <button
+                ng-class="component.transient.acquiringPosition === true? 'button-dark':'button-positive'"
+                class="ion-location icon-left button button-positive"
+                ng-click="$parent.$parent.$parent.$parent.acquirePosition()">Capturar posição
+              </button>
+            </div>
+            <div class="col col-75 pull-left df-col">
+              <div ng-if="!component.lastPostionAcquisitionTime || component.transient.acquiringPosition">
+                {{component.transient.acquisitionStatusDesc}}
+              </div>
+              <div class="" ng-if="component.lastPostionAcquisitionTime && !component.transient.acquiringPosition">
+                Recuperada a <time-ago from-time='{{ component.lastPostionAcquisitionTime }}'></time-ago>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <ion-item class="item item-input-no-border item-text-wrap" style="margin-top:10px;" ng-class="{'row-no-padding' : nopadding}">
+            <i class="icon ion-information-circled calm"></i>
+            Para capturar a localização, certifique-se de que o GPS está ativo e que o dispositivo está a céu aberto.
+          </ion-item>
+        </div>
+      </ion-item>
+    </div>
+    </ng-form>
+  </df-component>
+

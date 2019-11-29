@@ -1,0 +1,12 @@
+<!-- We need to put a unique name here because we will publish. Siblings would override if the same name -->
+<ng-form name="form-{{component.slug}}">
+	<input type="hidden" ng-model="component" df-pre-validation />
+
+	<!-- Our container is actually just a button to a new page -->
+	<button type="submit" class="ion-chevron-right button button-block button-positive icon-right btn-container" ng-click="openContainer()">
+		<i df-validation-icon></i>
+	    {{component.headerTitle}}
+	</button>
+</ng-form>
+
+

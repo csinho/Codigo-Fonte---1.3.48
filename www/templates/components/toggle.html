@@ -1,0 +1,27 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+  <input type="hidden" ng-model="component" df-custom-validation />
+  <ion-item ng-show="showElement(component)">
+    <label  class="item-input">
+    <i df-validation-icon></i>
+    <div class="row no-padding" id="{{component.slug}}">
+      <div class="col col-66 toggle-item-label no-padding">
+         <df-item-label></df-item-label>
+      </div>
+      <div class="col col-33 no-padding">
+        <div class="row no-padding">
+          <div class="col no-padding">
+           <div class="toggle-item" on-tap="component.dataValue = component.dataValue === true? null : true" ng-class="component.dataValue === true? 'toggle-item-active': ''">
+              <span>Sim</span>
+            </div>
+          </div>
+          <div class="col no-padding">
+             <div class="toggle-item" on-tap="component.dataValue = component.dataValue === false? null : false" ng-class="component.dataValue === false? 'toggle-item-active': ''">
+              <span>Não</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </label>
+  </ion-item>
+</ng-form>

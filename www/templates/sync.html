@@ -1,0 +1,59 @@
+<ion-view drag-content="false" hide-menu="false" view-title="Sincronização" hide-nav-bar="false" hide-back-button="true" can-swipe-back="true">
+  <ion-content class="content-container has-bg">
+
+    <div ng-controller="SyncController as syncCtrl">
+      <div class="mini-header" ng-include src="'templates/miniHeader.html'"></div>
+      <div>
+         <div class="card card-padding" ng-if="false">
+          <div class="item item-divider">
+            Execução de queries no banco local
+          </div>
+
+          <label class="item-input" id="sqlLabel">
+                <span class="input-label">sql:</span>
+                <input type="text"
+                        id="sql"
+                        name="sql"
+                        ng-model="syncCtrl.sqlQuery"
+                        placeholder="Consulta a ser executada"
+                    />
+               </label>
+          <button class="button button-block button-positive" ng-click="syncCtrl.queryDb()">Executar</button>
+          <div class="item item-text-wrap">
+            <p> {{syncCtrl.queryResultMsg}}</p>
+            <pre> {{syncCtrl.queryResult | json}}</pre>
+          </div>
+        </div>
+
+        <div class="card card-padding">
+          <div class="item item-divider">
+            A sincronização envia os formulários registrados e recebe atualizações
+          </div>
+          <button class="button button-block" ng-class="syncCtrl.syncing === true? 'button-dark':'button-positive'" ng-click="syncCtrl.sync()">{{syncCtrl.syncBtnLabel}}</button>
+          <div class="item item-text-wrap">
+            <div class="row" style="display:table">
+              <div class="col col-10">
+                <i style="font-size:33px" ng-class="syncCtrl.syncSucceeded? 'ion-checkmark-round balanced': 'ion-alert-circled assertive'" ng-show="syncCtrl.synced"></i>
+              </div>
+              <div class="col col-90" style="display:table-cell;vertical-align:middle">
+                {{syncCtrl.syncResultMsg}}
+              </div>
+            </div>
+            <div ng-show="syncCtrl.syncing">
+              <progress id="progressbar" max="100" value="0"></progress>
+            </div>
+            <div class="row" tyle="display:table">
+              <div class="col col-10">
+
+              </div>
+              <div class="col col-90" style="display:table-cell;vertical-align:middle" ng-show="syncCtrl.synced">
+                {{syncCtrl.uploadSummary}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mini-footer" ng-include src="'templates/miniFooter.html'"></div>
+    </div>
+  </ion-content>
+</ion-view>

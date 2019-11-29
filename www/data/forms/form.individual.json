@@ -1,0 +1,611 @@
+{
+  "slug": "cadastroIndividual",
+  "meta": {
+    "formVersion": 1,
+    "createdAt": "2016-05-01",
+    "updatedAt": "2016-05-02",
+    "formType": "cadastroIndividual",
+    "formName": "Cadastro Individual",
+    "icon":"user",
+    "themeColor":"yellow",
+    "publicForm" : true,
+    "summary" : {
+      "icon" : "ion-android-person",
+      "title" : "nomeCompleto",
+      "subtitle" : "numeroCartaoSUS"
+    }
+  },
+  "elements": [
+    {
+      "type": "container",
+      "slug": "identificacaoCidadao",
+      "headerTitle": "Identificação do Cidadão",
+      "requiresOpening": true,
+      "elements": [
+        {
+          "type": "textbox",
+          "slug": "numeroCartaoSUS",
+          "dataType": "number",
+          "label": "Nº do Cartão do SUS",
+          "desc": "Informe o número do cartão do SUS",
+          "dataValue": null,
+          "searchable": true,
+          "maxLength":15,
+          "minLength":15,
+          "validators": ["cnsIsValid"],
+          "minValue": 0
+        },
+        {
+          "type": "textbox",
+          "slug": "nomeCompleto",
+          "dataType": "text",
+          "label": "Nome Completo",
+          "desc": "Informe o nome do cidadão",
+          "required": true,
+          "dataValue": "",
+          "searchable": true
+        },
+        {
+          "type": "textbox",
+          "slug": "nomeSocial",
+          "dataType": "text",
+          "label": "Nome Social",
+          "desc": "Informe o nome social",
+          "dataValue": "",
+          "searchable": true
+        },
+        {
+          "type": "date",
+          "slug": "dataNascimento",
+          "dataType": "date",
+          "label": "Data de Nascimento",
+          "desc": "Informe a data de nascimento",
+          "dataValue": "",
+          "validators": [
+            "pastDate",
+            "maxReasonableAge"
+          ],
+          "additionalValidationMessage":"A data de nascimento não pode ser maior que a atual e nem o indivíduo pode ter mais de 130 anos"
+        },
+        {
+          "type": "select",
+          "slug": "sexo",
+          "label": "Sexo",
+          "dataType":"number",
+          "desc": "Sexo",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "sexo"
+        },
+        {
+          "type": "select",
+          "slug": "racacor",
+          "label": "Raça/cor",
+          "desc": "Raça/cor",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "racacor"
+        },
+        {
+          "type": "textbox",
+          "slug": "numeroNIS",
+          "dataType": "number",
+          "label": "Nº NIS(PIS/PASEP)",
+          "desc": "Informe o Número do NIS(PIS/PASEP)"
+        },
+        {
+          "type": "toggle",
+          "slug": "maeConhecida",
+          "label": "Mãe Conhecida?"
+        },
+        {
+          "type": "textbox",
+          "slug": "nomeCompletoMae",
+          "dataType": "text",
+          "label": "Nome Completo da Mãe",
+          "desc": "Informe o nome completo da Mãe",
+          "requirementDependsOn": "maeConhecida",
+          "visibilityDependsOn": "maeConhecida"
+        },
+        {
+          "type": "select",
+          "slug": "nacionalidade",
+          "label": "Nacionalidade",
+          "desc": "Nacionalidade",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "nacionalidade"
+        },
+        {
+          "type": "textbox",
+          "slug": "paisNascimento",
+          "dataType": "text",
+          "label": "País de Nascimento",
+          "desc": "Informe o país de nascimento",
+          "visibilityDependsOn": "nacionalidade",
+          "visibilityDependsOnAttr": "dataValue.value",
+          "visibilityDependsOnCompare": 3
+        },
+        {
+          "type": "textbox",
+          "slug": "telefoneCelular",
+          "dataType": "tel",
+          "label": "Telefone Celular",
+          "desc": "Informe o telefone celular",
+          "mask": "(99) 99999-999?9"
+        },
+        {
+          "type": "autocomplete",
+          "label": "Estado de Nascimento",
+          "slug": "unidadefederativa",
+          "dataValue": null,
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "unidadefederativa"
+        },
+        {
+          "type": "autocomplete",
+          "label": "Município de Nascimento",
+          "slug": "municipio",
+          "dataValue": null,
+          "visibilityDependsOn": "unidadefederativa",
+          "visibilityDependsOnAttr": "dataValue.value",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "municipio",
+          "externalItensDependsOn": "unidadefederativa",
+          "filterSourceItens": [
+            {
+              "leftOperand": "municipio.unidadefederativa",
+              "operator": "in",
+              "rightOperand": {
+                "elementProperty": "dataValue.value"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "slug": "informacoesSocioDemograficas",
+      "requiresOpening":true,
+      "headerTitle": "Informações Sociodemográficas",
+      "elements": [
+        {
+          "type": "select",
+          "label": "Relação de Parentesco com o Responsável Familiar",
+          "slug": "relacaodeparentescoresponsavelfamiliar",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "relacaodeparentescoresponsavelfamiliar"
+        },
+        {
+          "type": "autocomplete",
+          "label": "Ocupação",
+          "slug": "cbo",
+          "dataType": "text",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "cbo"
+        },
+        {
+          "type": "toggle",
+          "label": "Frequenta Escola ou Creche?",
+          "slug": "frequentaEscolaOuCreche"
+        },
+        {
+          "type": "select",
+          "label": "Qual o curso mais elevado que já frequentou?",
+          "slug": "cursomaiselevado",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "cursomaiselevado"
+        },
+        {
+          "type": "select",
+          "label": "Situação no Mercado de Trabalho",
+          "slug": "situacaomercadodetrabalho",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "situacaomercadodetrabalho"
+        },
+        {
+          "type": "select",
+          "slug":"responsavelcrianca",
+          "label": "Criança de 0 a 9 anos, com quem fica?",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "responsavelcrianca"
+        },
+        {
+          "type": "toggle",
+          "label": "Frequenta Cuidador Tradicional?",
+          "slug": "frequentaCuidadorTradicional"
+        },
+        {
+          "type": "toggle",
+          "label": "Participa de algum Grupo Comunitário?",
+          "slug": "participaGrupoComunitario"
+        },
+        {
+          "type": "toggle",
+          "label": "Possui Plano de Saúde?",
+          "slug": "possuiPlanoDeSaude"
+        },
+        {
+          "type": "toggle",
+          "label": "É membro de povo ou comunidade tradicional?",
+          "slug": "ehMembroDePovoOuComunidadeTradicional"
+        },
+        {
+          "type": "textbox",
+          "slug": "comunidadeTradicional",
+          "dataType": "text",
+          "label": "Informe qual a comunidade",
+          "desc": "Informe qual a comunidade",
+          "visibilityDependsOn": "ehMembroDePovoOuComunidadeTradicional",
+          "requirementDependsOn": "ehMembroDePovoOuComunidadeTradicional"
+        },
+        {
+          "type": "toggle",
+          "label": "Deseja informar orientação sexual/identidade de gênero?",
+          "slug": "desejaInformarOrientacaoIdentidadeGenero"
+        },
+        {
+          "type": "select",
+          "visibilityDependsOn": "desejaInformarOrientacaoIdentidadeGenero",
+          "requirementDependsOn": "desejaInformarOrientacaoIdentidadeGenero",
+          "label": "Orientação/Identidade de Gênero",
+          "slug": "orientacaosexual",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "orientacaosexual"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem Alguma Deficiência?",
+          "slug": "temDeficiencia",
+          "required":true
+        },
+        {
+          "type": "multiSelect",
+          "visibilityDependsOn": "temDeficiencia",
+          "requirementDependsOn": "temDeficiencia",
+          "label": "Quais Deficiências?",
+          "slug": "deficiencia",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "deficiencia"
+        },
+        {
+          "type": "toggle",
+          "label": "Saída do Cadastro",
+          "slug": "saidaDoCadastro"
+        },
+        {
+          "type": "select",
+          "visibilityDependsOn": "saidaDoCadastro",
+          "requirementDependsOn": "saidaDoCadastro",
+          "label": "Motivo da Saída",
+          "slug": "motivosaida",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "motivosaida"
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "headerTitle": "Condições Gerais de Saúde",
+      "slug": "condicoesGeraisDeSaude",
+      "elements": [
+        {
+          "type": "toggle",
+          "label": "Está gestante?",
+          "slug": "estaGestante",
+          "visibilityDependsOn": "sexo",
+          "visibilityDependsOnCompare": 1,
+          "visibilityDependsOnAttr": "value"
+        },
+        {
+          "type": "textbox",
+          "slug": "maternidadeDeReferencia",
+          "dataType": "text",
+          "label": "Maternidade de referência",
+          "desc": "Maternidade de referência",
+          "visibilityDependsOn": "estaGestante"
+        },
+        {
+          "type": "select",
+          "requirementDependsOn": "peso",
+          "label": "Sobre seu peso, você se considera",
+          "slug": "consideracaopeso",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "consideracaopeso"
+        },
+        {
+          "type": "toggle",
+          "label": "Está fumante?",
+          "slug": "estaFumante"
+        },
+        {
+          "type": "toggle",
+          "label": "Faz uso de álcool?",
+          "slug": "fazUsoDeAlcool"
+        },
+        {
+          "type": "toggle",
+          "label": "Faz uso de outras drogas?",
+          "slug": "fazUsoDeOutrasDrogas"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem hipertensão arterial?",
+          "slug": "temHipertensaoArterial"
+
+        },
+        {
+          "type": "toggle",
+          "label": "Tem diabetes?",
+          "slug": "temDiabetes"
+        },
+        {
+          "type": "toggle",
+          "label": "Teve AVC/Derrame?",
+          "slug": "teveAVCDerrame"
+        },
+        {
+          "type": "toggle",
+          "label": "Teve infarto?",
+          "slug": "teveInfarto"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem doença cardíaca/do coração?",
+          "slug": "temDoencaCardiaca"
+        },
+        {
+          "type": "multiSelect",
+          "visibilityDependsOn": "temDoencaCardiaca",
+          "requirementDependsOn": "temDoencaCardiaca",
+          "label": "Qual(is) doença(s) cardíaca(s)?",
+          "slug": "doencacardiaca",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "doencacardiaca"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem ou teve problemas nos rins?",
+          "slug": "temOuTeveProblemaNosRins"
+        },
+        {
+          "type": "multiSelect",
+          "visibilityDependsOn": "temOuTeveProblemaNosRins",
+          "requirementDependsOn": "temOuTeveProblemaNosRins",
+          "label": "Qual(is) problemas?",
+          "slug": "problemanosrins",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "problemanosrins"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem doença respiratória/no pulmão",
+          "slug": "temOuTeveDoencaRespiratoria"
+        },
+        {
+          "type": "multiSelect",
+          "visibilityDependsOn": "temOuTeveDoencaRespiratoria",
+          "requirementDependsOn": "temOuTeveDoencaRespiratoria",
+          "label": "Qual(is) problemas?",
+          "slug": "doencarespiratoria",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "doencarespiratoria"
+        },
+        {
+          "type": "toggle",
+          "label": "Está com hanseníase",
+          "slug": "estaComHanseniase"
+        },
+        {
+          "type": "toggle",
+          "label": "Está com tuberculose",
+          "slug": "estaComTuberculose"
+        },
+        {
+          "type": "toggle",
+          "label": "Está com câncer",
+          "slug": "estaComCancer"
+        },
+        {
+          "type": "toggle",
+          "label": "Teve alguma internação nos últimos 12 meses",
+          "slug": "esteveInternadoNosUltimosDozeMeses"
+        },
+        {
+          "type": "textbox",
+          "slug": "indiqueQualACausa",
+          "dataType": "text",
+          "label": "Indique por qual(is) causa(s)",
+          "desc": "Indique por qual(is) causa(s)",
+          "visibilityDependsOn": "esteveInternadoNosUltimosDozeMeses",
+          "requirementDependsOn": "esteveInternadoNosUltimosDozeMeses"
+        },
+        {
+          "type": "toggle",
+          "label": "Fez ou faz tratamento com psiquiatra ou teve internação por problema de saúde mental?",
+          "slug": "tratamentoComPsiquiatraOuInternacaoSaudeMental"
+        },
+        {
+          "type": "toggle",
+          "label": "Está acamado?",
+          "slug": "estaAcamado"
+        },
+        {
+          "type": "toggle",
+          "label": "Está domiciliado?",
+          "slug": "estaDomiciliado"
+        },
+        {
+          "type": "toggle",
+          "label": "Usa plantas medicinais?",
+          "slug": "usaPlantasMedicinais"
+        },
+        {
+          "type": "textbox",
+          "slug": "indiqueQuaisPlantasMedicinais",
+          "dataType": "text",
+          "label": "Indique qual(is) planta(s) medicinal(is)",
+          "desc": "Indique qual(is) planta(s) medicinal(is)",
+          "visibilityDependsOn": "usaPlantasMedicinais",
+          "requirementDependsOn": "usaPlantasMedicinais"
+        },
+        {
+          "type": "toggle",
+          "label": "Usa outras práticas integrativas complementares?",
+          "slug": "usaOutrasPraticasIntegrativasComplementares"
+        },
+        {
+          "type": "dynamicList",
+          "slug": "outrasCondicoesDeSaude",
+          "itemTitle": "Condição de saúde",
+          "elements": [],
+          "elementsTemplate": {
+            "type": "container",
+            "slug": "outrasCondicoesDeSaude_Item",
+            "elements": [
+              {
+                "type": "textbox",
+                "label": "Condição de saúde adicional",
+                "dataType": "text",
+                "slug": "condicaoDeSaude",
+                "dataValue": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "requiresOpening":true,
+      "headerTitle": "Cidadão em Situação de Rua",
+      "slug": "cidadaoemSituacaoDerua",
+      "elements": [
+        {
+          "type": "toggle",
+          "label": "Está em situação de rua",
+          "slug": "estaEmSituacaoDeRua",
+          "required":true
+        },
+        {
+          "type": "select",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua",
+          "label": "Tempo em situação de rua",
+          "slug": "temposituacaoderua",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "temposituacaoderua"
+        },
+        {
+          "type": "toggle",
+          "label": "Recebe algum benefício?",
+          "slug": "recebeAlgumBeneficio",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "toggle",
+          "label": "Possui referência familiar?",
+          "slug": "possuiReferenciaFamiliar",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "select",
+          "label": "Quantas vezes se alimenta ao dia?",
+          "slug": "quantasvezesalimentacao",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "quantasvezesalimentacao",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "multiSelect",
+          "label": "Qual a origem da alimentação?",
+          "slug": "origemalimentacao",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "origemalimentacao",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "toggle",
+          "label": "É acompanhado por outra instituição?",
+          "slug": "ehAcompanhadoPorOutraInstituicao",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "textbox",
+          "slug": "indiqueQuaisInstituicoes",
+          "dataType": "text",
+          "label": "Indique qual(is) instituição(ões)",
+          "desc": "Indique qual(is) instituição(ões)",
+          "visibilityDependsOn": "ehAcompanhadoPorOutraInstituicao",
+          "requirementDependsOn": "ehAcompanhadoPorOutraInstituicao"
+        },
+        {
+          "type": "toggle",
+          "label": "Visita algum familiar com frequência?",
+          "slug": "visitaAlgumFamiliarComFrequencia",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "textbox",
+          "slug": "grauDeParentestoDoFamiliarVisitado",
+          "dataType": "text",
+          "label": "Qual o grau de parentesco do(s) familiar(es) visitado(s)?",
+          "desc": "Qual o grau de parentesco do(s) familiar(es) visitado(s)?",
+          "visibilityDependsOn": "visitaAlgumFamiliarComFrequencia",
+          "requirementDependsOn": "visitaAlgumFamiliarComFrequencia"
+        },
+        {
+          "type": "toggle",
+          "label": "Tem acesso a higiene pessoal?",
+          "slug": "temAcessoAHigienePessoal",
+          "visibilityDependsOn": "estaEmSituacaoDeRua",
+          "requirementDependsOn": "estaEmSituacaoDeRua"
+        },
+        {
+          "type": "multiSelect",
+          "label": "Qual(is) tipo(s) de higine pessoal?",
+          "slug": "acessohigiene",
+          "visibilityDependsOn": "temAcessoAHigienePessoal",
+          "requirementDependsOn": "temAcessoAHigienePessoal",
+          "optionsExternalSource": true,
+          "sourceType": "database",
+          "contentType": "acessohigiene"
+        }
+      ]
+    },
+    {
+       "type": "associationButton",
+       "slug": "associationVisita",
+       "itemTitle": "Visita",
+       "associationTargetType": "visita",
+       "formAssociation": true,
+       "dataValue": null,
+       "elements": []
+    }
+  ],
+  "appendedData":[]
+}

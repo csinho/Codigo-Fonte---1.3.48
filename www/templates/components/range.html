@@ -1,0 +1,19 @@
+<ion-item class="item-accordion" ng-if="showElement(component)">
+    <label class="item-input" id="{{component.slug}}">
+        <df-item-label/>
+        <div class="range-container range range-positive">
+            <span >{{component.dataValue}}</span>
+            <!-- <span class="range-min">{{component.minValue}}</span> -->
+            <input type="range"
+                id="{{component.slug}}"
+                name="{{component.slug}}"
+                ng-model="component.dataValue"
+                min="{{component.minValue}}"
+                max="{{component.maxValue}}"
+                step="{{component.step}}"
+                df-custom-validation
+                    />
+            <!-- <span class="range-max">{{component.maxValue}}</span> -->
+        </div>
+    </label>
+</ion-item>

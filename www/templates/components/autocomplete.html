@@ -1,0 +1,30 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+<ion-item class="item-accordion" ng-class="{'row-no-padding' : nopadding}" ng-if="showElement()">
+    <label class="item-input" id="{{component.slug}}">
+
+        <i df-validation-icon></i>
+
+        <df-item-label></df-item-label>
+
+        <input ion-autocomplete type="text" readonly="readonly"
+            class="ion-autocomplete" autocomplete="off" max-selected-items="1"
+            external-model="component.dataValue"
+            model-to-item-method="modelToItemMethod(modelValue)"
+            id="{{component.slug}}"
+            name="{{component.slug}}"
+            ng-model="component.dataValue"
+            items-method="callbackMethod(query)"
+            item-view-value-key="desc"
+            search-placeholder="Digite para filtrar os resultados"
+            placeholder="Selecione"
+            select-items-label="Selecione um item"
+            selected-items-label="Itens selecionados"
+            cancel-label="Pronto"
+            style="text-align: right; text-transform:uppercase;"
+            ng-required="isRequired(component)"
+            df-custom-validation
+        />
+
+    </label>
+</ion-item>
+</ng-form>

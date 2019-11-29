@@ -1,0 +1,106 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "angular": true
+  },
+  "plugins": [
+    "angular"
+  ],
+  "rules": {
+    //rules http://eslint.org/docs/rules/
+    "strict": [2, "function"],
+
+    //best practies
+    "consistent-return": 0,
+    "curly": 2,
+    "eqeqeq": 2,
+    "no-throw-literal": 2,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "no-alert": 2,
+    "no-console": 2,
+    "no-debugger": 2,
+    "no-empty": 2,
+    "no-eval": 2,
+
+    //variables
+    "no-delete-var": 2,
+    "no-undef": 2,
+    "no-unused-vars": [2, {
+      "vars": "all",
+      "args": "after-used"
+    }],
+
+    //stylistic issues
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    "comma-dangle": [2, "never"],
+    "array-bracket-spacing": [2, "never"],
+    "block-spacing": [2, "always"],
+    "comma-spacing": [2],
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "key-spacing": [2, {
+      "beforeColon": false,
+      "afterColon": true
+    }],
+    "keyword-spacing": 2,
+    "linebreak-style": 2,
+    "no-multiple-empty-lines": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "object-curly-spacing": [2, "always"],
+    "quote-props": [2, "as-needed"],
+    "quotes": [2, "single"],
+    "radix": 2,
+
+    "newline-after-var": 2,
+    "space-before-blocks": [2, "always"],
+    "space-in-parens": [2, "never"],
+    "space-unary-ops": [2, {
+      "words": true,
+      "nonwords": false
+    }],
+    "valid-typeof": 2,
+    "max-len": [2, {
+      "code": 120
+    }],
+    "max-params" : [2, 4],
+    "max-depth" : [2, 4],
+    "complexity": [2, 10],
+    "max-nested-callbacks": [2, 3],
+
+    //angular https://www.npmjs.com/package/eslint-plugin-angular
+    "angular/angularelement": 1,
+    "angular/controller-as": 2,
+    "angular/controller-as-route": 2,
+    "angular/controller-as-vm": [2, "vm"],
+    "angular/controller-name": [2, "/[A-Z].*Controller$/"],
+    "angular/definedundefined": 2,
+    "angular/di": [2, "function"],
+    "angular/di-unused": 2,
+    "angular/di-order": [0, true],
+    "angular/component-limit": [0, 1],
+    "angular/document-service": 2,
+    "angular/file-name": [2,{"typeSeparator":"dot", "ignoreTypeSuffix":true, "nameStyle":"dash"}],
+    "angular/interval-service": 2,
+    "angular/json-functions": 2,
+    "angular/log": 2,
+    "angular/module-getter": 2,
+    "angular/module-setter": 2,
+    "angular/no-cookiestore": 2,
+    "angular/no-jquery-angularelement": 2,
+    "angular/no-private-call": 2,
+    "angular/no-service-method": 2,
+    "angular/no-services": [2, ["$http", "$resource", "Restangular"]],
+    "angular/service-name": 2,
+    "angular/timeout-service": 2,
+    "angular/typecheck-array": 2,
+    "angular/typecheck-date": 2,
+    "angular/typecheck-function": 2,
+    "angular/typecheck-number": 2,
+    "angular/typecheck-object": 2,
+    "angular/typecheck-string": 2,
+    "angular/watchers-execution": [0, "$digest"],
+    "angular/window-service": 2
+  }
+}

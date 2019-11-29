@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.prodeb.ba.gov.br"> -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://10.2.18.70:9000 *.prodeb.ba.gov.br">-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Mapa da Saúde</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ng-cordova.min.js"></script>
+    <script src="lib/mask.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="lib/ion-autocomplete/dist/ion-autocomplete.js"></script>
+    <link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
+    <script src="lib/angular-timeago/dist/angular-timeago.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/constants.js"></script>
+
+    <script src="js/app.config.js"></script>
+    <script src="js/app.routes.js"></script>
+
+    <script src="js/services/global.service.js"></script>
+
+    <script src="js/persistence/remote.persistence.js"></script>
+    <script src="js/persistence/sqlite.persistence.js"></script>
+
+    <script src="js/persistence/persistence.factory.js"></script>
+    <script src="js/persistence/persistence.js"></script>
+
+
+    <script src="js/services/localization.service.js"></script>
+    <script src="js/services/flux.service.js"></script>
+    <script src="js/services/toast.service.js"></script>
+    <script src="js/services/form.handler.service.js"></script>
+    <script src="js/services/form.service.js"></script>
+    <script src="js/services/search.service.js"></script>
+    <script src="js/services/event.service.js"></script>
+    <script src="js/services/sync.service.js"></script>
+    <script src="js/services/auth.service.js"></script>
+    <script src="js/services/validation.service.js"></script>
+    <script src="js/services/form.association.service.js"></script>
+    <script src="js/services/dependency.service.js"></script>
+    <script src="js/services/utils.service.js"></script>
+    <script src="js/services/geolocation.service.js"></script>
+
+
+    <script src="js/directives/utils.directive.js"></script>
+    <script src="js/directives/dfform.directive.js"></script>
+    <script src="js/directives/dfpane.directive.js"></script>
+    <script src="js/directives/dfcontainer.directive.js"></script>
+    <script src="js/directives/dfsection.directive.js"></script>
+    <script src="js/directives/dfcomponent.directive.js"></script>
+    <script src="js/directives/dfdynamiclist.directive.js"></script>
+    <script src="js/directives/dfassociationlist.directive.js"></script>
+    <script src="js/directives/dfsearchresult.directive.js"></script>
+    <script src="js/directives/dfsummary.directive.js"></script>
+    <script src="js/directives/dfcustomvalidation.directive.js"></script>
+    <script src="js/directives/dfevent.directive.js"></script>
+    <script src="js/directives/dfgeolocation.directive.js"></script>
+    <script src="js/directives/dfqrcodebutton.directive.js"></script>
+
+    <script src="js/interceptors/pagechange.interceptor.js"></script>
+    <script src="js/interceptors/error.interceptor.js"></script>
+    <script src="js/interceptors/http.error.interceptor.js"></script>
+
+    <script src="js/components/form.manager.js"></script>
+    <script src="js/components/componentService.factory.js"></script>
+
+
+    <script src="js/components/associationlist.component.service.js"></script>
+    <script src="js/components/autocomplete.component.service.js"></script>
+    <script src="js/components/generic.component.service.js"></script>
+    <script src="js/components/geolocation.component.service.js"></script>
+    <script src="js/components/geolocation.component.service.js"></script>
+    <script src="js/components/multiselect.component.service.js"></script>
+    <script src="js/components/select.component.service.js"></script>
+    <script src="js/components/qrcodebutton.component.service.js"></script>
+    <script src="js/components/toggle.component.service.js"></script>
+    <script src="js/components/dynamiclist.component.service.js"></script>
+
+    <script src="js/controllers/auth.controller.js"></script>
+    <script src="js/controllers/global.controller.js"></script>
+    <script src="js/controllers/faq.controller.js"></script>
+    <script src="js/controllers/event.controller.js"></script>
+    <script src="js/controllers/sobre.controller.js"></script>
+    <script src="js/controllers/form.controller.js"></script>
+    <script src="js/controllers/search.controller.js"></script>
+    <script src="js/controllers/sync.controller.js"></script>
+    <script src="js/controllers/associationPage.controller.js"></script>
+    <script src="js/controllers/formPage.controller.js"></script>
+    <script src="js/controllers/forms.controller.js"></script>
+    <script src="js/controllers/summaryPage.controller.js"></script>
+    <script src="js/controllers/searchIndividuo.controller.js"></script>
+    <script src="js/controllers/backend.controller.js"></script>
+
+  </head>
+
+  <body ng-app="app">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

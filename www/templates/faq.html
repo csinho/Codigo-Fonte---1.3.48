@@ -1,0 +1,19 @@
+<style media="screen">
+  .card-faq {
+    margin: 10px;
+  }
+</style>
+<ion-view view-title="Dúvidas frequentes">
+  <ion-content>
+    <div class="list card card-faq" accesskey="" ng-repeat="faq in faqCtrl.faqs">
+      <div class="item item-divider item-icon-right item-text-wrap" ng-click="faqCtrl.toggle(faq)">
+        <p>{{faq.id}}: {{faq.pergunta}}</p>
+        <i class="icon ion-arrow-down-b" ng-show="!faq.show"></i>
+        <i class="icon ion-arrow-up-b" ng-show="faq.show"></i>
+      </div>
+      <div id="resposta-{{faq.id}}" class="item item-body" ng-show="faq.show">
+        <p>{{faq.resposta}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

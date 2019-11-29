@@ -1,0 +1,15 @@
+<ng-form class="df-form" name="form-{{component.slug}}" novalidate>
+	<div class="padding" ng-controller="FormAssociationController as formAssociationCtrl">
+		<ion-item ng-if="component.dataValue">
+			{{component.dataValue}}
+		</ion-item>
+
+	   <div ng-if="!component.dataValue">
+		   <button class="button button-block button-calm" ng-click="formAssociationCtrl.registerNew(component, this)">Cadastrar Novo(a) {{component.itemTitle}}</button>
+		   <button class="button button-block button-calm" ng-click="formAssociationCtrl.search(term)">Associar um(a) {{component.itemTitle}}</button>
+	   </div>
+
+	</div>
+</ng-form>
+
+

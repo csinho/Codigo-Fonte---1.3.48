@@ -1,0 +1,17 @@
+<div class="">
+  <div class="row df-row" style="height:70px;">
+    <div class="col df-col col-75" ng-click="onItemClickEvent()">
+      <!--<i class="icon" ng-class="summary.icon"></i>-->
+      <h2>{{summary.title.label}}:<b> {{summary.title.value}}</b></h2>
+      <p>{{summary.subtitle.label}}: <b>{{summary.subtitle.value}}</b></p>
+    </div>
+    <div class="col df-col col-25">
+      <div ng-if="component.mainItem"
+        class="toggle-item toogle-unique"
+        ng-click="onSelectMainItemClick()"
+        ng-class="component.mainItem.selectedItemSlug === slug? 'toggle-item-active': ''">
+        <span>{{component.mainItem.label}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<ion-list>
+  <ion-item ng-repeat="result in children" ng-click="onItemClick(result);$event.stopPropagation();"
+            class="enable-pointer-events summary-padding">
+    <df-summary-alt class="df-summary" ng-model="result"></df-summary-alt>
+  </ion-item>
+</ion-list>
